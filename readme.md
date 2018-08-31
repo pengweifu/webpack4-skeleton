@@ -45,7 +45,7 @@
 
 由于airbnb的规范过于严格，创建`.eslintrc.js`，创建自定义配置文件。
 
-```
+``` javascript
 module.exports = {
   extends: "airbnb-base", // 继承airbnb的语法检测规则
   root: true,
@@ -110,7 +110,7 @@ module.exports = {
 
 然后创建配置文件`common.js`、`dev.js`、`prod.js`，`common.js`存放开发环境和生产环境公用的配置:
 
-```
+``` javascript
 const { resolve } = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -197,7 +197,7 @@ module.exports = function(env, argv) {
 
 接下来配置开发环境`dev.js`:
 
-```
+``` javascript
 const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -242,7 +242,7 @@ module.exports = {
 
 修改`package.json`，添加script脚本：
 
-```
+``` json
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -271,7 +271,7 @@ module.exports = {
 
 编辑`prod.js`：
 
-```
+``` javascript
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -305,7 +305,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist/*'], {
-      root: resolve(__dirname, '../'),
+      root: resolve(__dirname, '../'), // 指定root可以避免由于清理目录超出根目录而跳过清理
     }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
